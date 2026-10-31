@@ -1,0 +1,54 @@
+HIGH ON AI WORKSHOP PROMPTS
+Content Management System | 31 October 2026
+Work only in the empty cms-workshop folder. Do not use private content or secrets.
+Prompts guide the agent but do not replace actual tool permission settings.
+
+PROMPT 1 - PLAN
+I am a beginner building a small content management system for writing posts and showing a local blog reader view.
+Use one index.html with embedded HTML, CSS and vanilla JavaScript. No dependencies, CDN, backend, login, API keys or external network calls. Use fictional content only.
+First build only create, edit and preview of draft posts with a title and plain-text body. Later add a unique slug, category, draft/published status, local publishing, search and browser persistence.
+Give me a short plan and five manual checks. Explain any command needed. Do not edit files or run commands yet. Stop for review.
+
+PROMPT 2 - BUILD SMALL
+Build the agreed first version in index.html. Create and edit draft posts with a title and plain-text body. Show saved drafts in a list and let me preview one. Preview must not publish it.
+Reject empty or whitespace-only titles. Render all user content as text, not executable HTML. Keep body line breaks in preview.
+Make the dashboard and preview clear on narrow screens, with visible labels, keyboard-operable controls and readable contrast. Keep the no-dependency and no-network constraints. Do not add later features yet.
+Explain changes, preview steps and anything not verified. Explain commands before running them and respect current permissions.
+
+PROMPT 3 - TEST AND REPAIR
+Test only the features already implemented. Do not add features or redesign the app.
+Check creating a draft, rejecting blank titles, editing title/body without creating a duplicate, and previewing the saved text without publishing.
+If improvements exist, test duplicate and invalid slugs, category saving, search, draft/published filtering, local publish/unpublish, and persistence at the same URL after reload. A draft must be absent from the reader; publishing adds it; unpublishing removes it. Saving an edit to a published post should update the local reader immediately.
+Use available authorized tools. Do not install test tools. Report exactly which checks ran and their results. Label checks not run and give manual steps. Code inspection alone is not a passed browser test. Explain the smallest repair, preserve working behavior, then retest.
+
+PROMPT 4 - IMPROVE
+Extend the existing CMS without starting over. Keep one index.html, no dependencies, no backend and no network calls.
+Add category and a required unique slug to each post. Suggest a slug from the title, allow editing, and accept lowercase letters, digits and hyphens only. Reject duplicates across all posts with a clear message. Explain that the slug is a readable local identifier, not a hosted URL.
+Add draft/published status, search and status filtering in the dashboard. Add a local reader/blog view showing published posts only. Use explicit Publish locally and Unpublish controls. Saving edits to a published post updates that local reader immediately.
+State visibly: publishing changes this browser only, not the internet. Draft filtering is not authentication or access control.
+Persist posts in localStorage. Handle unavailable or corrupt storage without crashing; report saving failures honestly. Preserve plain-text rendering, keyboard access and narrow-screen usability. Summarize changes and manual checks. Do not add login or deployment.
+
+PROMPT 5 - REVIEW
+Review the CMS without changing files. Check for secrets, external scripts, network calls, unsafe rendering of post text, missing validation, duplicate slugs, inaccessible controls and storage failure handling.
+Confirm that draft posts stay out of the reader and publish/unpublish changes local visibility correctly. Distinguish checks actually run from checks not run.
+Explain the limits: same-browser data only, local publishing only, no authentication, no secure draft protection and no production guarantee. Outline authentication/permissions, a database and hosting as later work, not additions to this workshop.
+
+RECOVERY PROMPT - ONE REPRODUCIBLE BUG
+Steps: [what I clicked or typed]
+Expected: [what should happen]
+Actual: [what happened, with the exact error if visible]
+Explain the smallest fix and preserve working behavior. Do not add dependencies or unrelated features. Retest if tools allow; otherwise give exact manual steps and say the check was not run.
+
+LOCAL PREVIEW
+After index.html exists, open a terminal in cms-workshop. Use one command only if already installed.
+macOS/Linux with Python 3:
+python3 -m http.server 8000 --bind 127.0.0.1
+Windows with the Python launcher:
+py -m http.server 8000 --bind 127.0.0.1
+Open http://127.0.0.1:8000. Keep the terminal running. Ctrl+C stops the server.
+If port 8000 is busy, use 8001 in both command and URL. Storage is tied to the browser and origin, so changing the port can show a different saved dataset.
+If Python is unavailable, open index.html directly for basic UI checks. File-URL storage is not portable across browsers. Do not use it to promise reliable persistence.
+This server is for local practice, not production hosting. Publish locally does not deploy the site.
+
+PREPARED REFERENCE
+The separately supplied CMS is a prepared finished reference, not a result claimed to have been generated live. Use it if access, connectivity or timing blocks the live build. Inspect its behavior, test a change, and be clear about what was prepared ahead of time.
